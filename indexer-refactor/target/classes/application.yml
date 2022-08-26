@@ -1,0 +1,21 @@
+spring:
+  main:
+    log-startup-info: false
+    banner-mode: off
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/searcher_refactor?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:mapper/index-mapper.xml
+
+searcher:
+  indexer:
+    doc-root-path: D:\搜索引擎\docs\api
+    url-prefix: https://docs.oracle.com/javase/8/docs/api/
+
+logging:
+  level:
+    com.peixinchen.searcher: debug
+    com.peixinchen.searcher.indexer.mapper: error

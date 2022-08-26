@@ -1,0 +1,15 @@
+spring:
+  main:
+    log-startup-info: false
+    banner-mode: off
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/searcher_refactor?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:mapper/search-mapper.xml
+
+logging:
+  level:
+    com.peixinchen.searcher.web: debug

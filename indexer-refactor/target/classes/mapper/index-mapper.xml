@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peixinchen.searcher.indexer.mapper.IndexDatabaseMapper">
+    <insert id="batchInsertForwardIndexes" useGeneratedKeys="true" keyProperty="docId" keyColumn="docid">
+        insert into forward_indexes (title, url, content) values
+        <!-- 一共有多少条记录，得根据用户传入的参数来决定，所以这里采用动态 SQL 特性 -->
+        <foreach collection="list" item="doc" separator=", ">
+            (#{doc.title}, #{doc.url}, #{doc.content})
+        </foreach>
+    </insert>
+
+    <!-- 不关心自增 id -->
+    <insert id="batchInsertInvertedIndexes">
+        insert into inverted_indexes (word, docid, weight) values
+        <foreach collection="list" item="record" separator=", ">
+            (#{record.word}, #{record.docId}, #{record.weight})
+        </foreach>
+    </insert>
+</mapper>
